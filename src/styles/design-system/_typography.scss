@@ -1,0 +1,120 @@
+/*
+|--------------------------------------------------------------------------
+| BioEvents Typography
+|--------------------------------------------------------------------------
+*/
+
+$font-heading: "Poppins", sans-serif;
+$font-body: "Inter", sans-serif;
+
+/* Display */
+
+.text-display {
+  font-family: $font-heading;
+
+  font-size: 42px;
+
+  font-weight: 700;
+
+  line-height: 1.15;
+}
+
+/* Titres */
+
+.text-h1 {
+  font-family: $font-heading;
+
+  font-size: 30px;
+
+  font-weight: 700;
+
+  line-height: 1.25;
+}
+
+.text-h2 {
+  font-family: $font-heading;
+
+  font-size: 24px;
+
+  font-weight: 600;
+
+  line-height: 1.3;
+}
+
+.text-h3 {
+  font-family: $font-heading;
+
+  font-size: 20px;
+
+  font-weight: 600;
+
+  line-height: 1.35;
+}
+
+/* Corps */
+
+.text-body-lg {
+  font-family: $font-body;
+
+  font-size: 18px;
+
+  font-weight: 400;
+
+  line-height: 1.7;
+}
+
+.text-body {
+  font-family: $font-body;
+
+  font-size: 16px;
+
+  font-weight: 400;
+
+  line-height: 1.6;
+}
+
+.text-body-sm {
+  font-family: $font-body;
+
+  font-size: 14px;
+
+  font-weight: 400;
+
+  line-height: 1.5;
+}
+
+/* Boutons */
+
+.text-button {
+  font-family: $font-body;
+
+  font-size: 16px;
+
+  font-weight: 600;
+
+  line-height: 1.2;
+}
+
+/* Labels */
+
+.text-label {
+  font-family: $font-body;
+
+  font-size: 14px;
+
+  font-weight: 500;
+
+  line-height: 1.3;
+}
+
+/* Légendes */
+
+.text-caption {
+  font-family: $font-body;
+
+  font-size: 12px;
+
+  font-weight: 400;
+
+  line-height: 1.4;
+}

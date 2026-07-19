@@ -1,1 +1,11 @@
 // app global css
+@import "../styles/design-system/colors";
+@import "../styles/design-system/typography";
+@import "../styles/design-system/spacing";
+@import "../styles/design-system/radius";
+@import "../styles/design-system/shadows";
+body {
+  background: #f8fafc;
+
+  color: #111827;
+}
