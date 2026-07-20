@@ -68,7 +68,7 @@ jobs:
 
 
       - name: Deploy dist to o2switch
-        uses: burnett01/rsync-deployments@7.0.2
+        uses: burnett01/rsync-deployments@v8
         with:
 
           switches: -avzr --delete
