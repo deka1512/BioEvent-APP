@@ -5,22 +5,14 @@ on:
     branches:
       - main
 
-  pull_request:
-    branches:
-      - main
-
-
 jobs:
 
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-
       - name: Checkout repository
         uses: actions/checkout@v4
-
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -28,57 +20,27 @@ jobs:
           node-version: 22
           cache: npm
 
-
       - name: Install dependencies
         run: npm ci
-
 
       - name: Build Quasar SPA
         run: npm run build
 
-
-
-  deploy:
-
+  test-ssh:
     needs: build
-
-    if: github.event_name == 'push'
 
     runs-on: ubuntu-latest
 
     steps:
-
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - name: Test SSH connection
+        uses: appleboy/ssh-action@v1.2.2
         with:
-          node-version: 22
-          cache: npm
-
-
-      - name: Install dependencies
-        run: npm ci
-
-
-      - name: Build production
-        run: npm run build
-
-
-      - name: Deploy dist to o2switch
-        uses: burnett01/rsync-deployments@v8
-        with:
-
-          switches: -avzr --delete
-
-          path: dist/spa/
-
-          remote_path: ${{ secrets.SERVER_PATH }}
-
-          remote_host: ${{ secrets.SERVER_HOST }}
-
-          remote_user: ${{ secrets.SERVER_USER }}
-
-          remote_key: ${{ secrets.SERVER_KEY }}
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_KEY }}
+          script: |
+            echo "===== SSH OK ====="
+            whoami
+            hostname
+            pwd
+            ls -la
