@@ -1,7 +1,7 @@
 <template>
   <div class="login-page">
 
-    <AuthCard>
+
 
       <!-- Titre -->
       <div class="header">
@@ -17,77 +17,11 @@
       </div>
 
 
-      <!-- Formulaire -->
-      <q-form
-        class="login-form"
-        @submit.prevent="handleLogin"
-      >
-
-        <BaseInput
-          v-model="email"
-          label="Adresse email"
-          icon="email"
-          autocomplete="email"
-        />
-
-
-        <BaseInput
-          v-model="password"
-          label="Mot de passe"
-          icon="lock"
-          password
-          autocomplete="current-password"
-        />
-
-
-        <div class="forgot">
-
-          <router-link to="/forgot-password">
-            Mot de passe oublié ?
-          </router-link>
-
-        </div>
-
-
-        <PrimaryButton
-          label="Se connecter"
-          type="submit"
-          icon="login"
-        />
-
-
-        <!-- TEST API TEMPORAIRE -->
-
-        <q-btn
-          label="Tester API"
-          icon="cloud"
-          color="secondary"
-          outline
-          class="q-mt-md"
-          @click="runTest"
-        />
-
-
-      </q-form>
 
 
 
-      <div class="register">
-
-        <span>
-          Vous n'avez pas de compte ?
-        </span>
 
 
-        <router-link to="/register">
-          Créer un compte
-        </router-link>
-
-
-      </div>
-
-
-    </AuthCard>
 
 
   </div>
@@ -101,7 +35,6 @@ import { ref } from "vue";
 import { useRouter } from "vue-router";
 import axios from "axios";
 
-import AuthCard from "../components/AuthCard.vue";
 
 import PrimaryButton from "@/components/PrimaryButton.vue";
 

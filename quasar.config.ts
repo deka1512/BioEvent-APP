@@ -10,7 +10,7 @@ export default defineConfig(ctx => {
     | Fichiers de démarrage (Boot)
     |--------------------------------------------------------------------------
     */
-    boot: ["i18n"],
+    boot: ["i18n", "axios"],
 
     /*
     |--------------------------------------------------------------------------
@@ -71,8 +71,9 @@ export default defineConfig(ctx => {
     | Serveur de développement
     |--------------------------------------------------------------------------
     */
-    devServer: {
-      open: true
+   devServer: {
+
+      open :true,
     },
 
     /*

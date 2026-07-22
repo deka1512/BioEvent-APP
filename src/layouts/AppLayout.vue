@@ -1,81 +1,169 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
-    <q-page-container>
-      <q-page class="auth-page">
-        <div class="auth-gradient"></div>
 
-        <div class="auth-content">
-          <router-view />
-        </div>
+  <q-layout
+    view="hHh lpR fFf"
+    class="app-layout"
+  >
+
+
+    <!-- Header dynamique -->
+
+    <component
+      :is="currentHeader"
+    />
+
+
+
+    <!-- Zone principale -->
+
+    <q-page-container class="page-container">
+
+      <q-page class="page-content">
+
+        <router-view />
+
       </q-page>
+
     </q-page-container>
+
+
+
+    <!-- Navigation mobile -->
+
+    <BottomNav />
+
+
   </q-layout>
+
 </template>
 
-<script setup></script>
 
-<style scoped lang="scss">
-.auth-page {
-  min-height: 100vh;
 
-  background: #ffffff;
+<script setup>
 
-  position: relative;
+import { computed } from "vue";
 
-  overflow: hidden;
-}
+import { useRoute } from "vue-router";
+
+
+
+import AppHeader from "@/components/header/AppHeader.vue";
+
+import FullHeader from "@/components/header/FullHeader.vue";
+
+import BottomNav from "@/components/BottomNav.vue";
+
+
+
+// Route actuelle
+
+const route = useRoute();
+
+
+
+// Liste des headers disponibles
+
+const headers = {
+
+  app: AppHeader,
+
+  full: FullHeader
+
+};
+
+
+
+// Header utilisé par la page
+
+const currentHeader = computed(() => {
+
+
+  const type = route.meta.header || "app";
+
+
+  return headers[type];
+
+
+});
+
+
+</script>
+
+
+
+<style scoped>
+
 
 /*
- Gradient supérieur BioEvents
+|--------------------------------------------------------------------------
+| Layout mobile
+|--------------------------------------------------------------------------
 */
 
-.auth-gradient {
-  position: absolute;
+.app-layout {
 
-  top: 0;
+  background:#F8FAFC;
 
-  left: 0;
+}
 
-  width: 100%;
 
-  height: 45%;
 
-  background:
-    radial-gradient(
-      circle at top left,
-      rgba(37, 99, 235, 0.35),
-      transparent 55%
-    ),
-    radial-gradient(
-      circle at top right,
-      rgba(124, 58, 237, 0.35),
-      transparent 55%
+/*
+|--------------------------------------------------------------------------
+| Protection navigation basse
+|--------------------------------------------------------------------------
+*/
+
+.page-container {
+
+
+  padding-bottom:
+
+    calc(
+
+      110px +
+
+      env(safe-area-inset-bottom)
+
     );
 
-  filter: blur(45px);
 
-  z-index: 0;
 }
+
+
 
 /*
- Contenu auth
+|--------------------------------------------------------------------------
+| Contenu mobile
+|--------------------------------------------------------------------------
 */
 
-.auth-content {
-  position: relative;
+.page-content {
 
-  z-index: 1;
 
-  min-height: 100vh;
+  min-height:100%;
 
-  display: flex;
 
-  flex-direction: column;
+  overflow-x:hidden;
 
-  justify-content: center;
 
-  align-items: center;
-
-  padding: 24px;
 }
+
+
+
+/*
+|--------------------------------------------------------------------------
+| Evite comportement desktop
+|--------------------------------------------------------------------------
+*/
+
+:deep(.q-page) {
+
+
+  width:100%;
+
+
+}
+
+
 </style>
